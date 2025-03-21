@@ -5,4 +5,5 @@ import {
   
   export default [
     route("signin", "./pages/signin.tsx"),
+    route("home", "./pages/home.tsx")
   ] satisfies RouteConfig;

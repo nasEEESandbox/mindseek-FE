@@ -1,7 +1,8 @@
 import Navbar from "@/components/navbar";
 import { Button } from "@/components/ui/button";
-
+import { useNavigate } from "react-router-dom";
 export default function Landing() {
+  const navigate = useNavigate();
   return (
     <>
       <div className="h-[90vh]">
@@ -20,7 +21,9 @@ export default function Landing() {
               track of your patient’s data.
             </h2>
             <div>
-              <Button size="lg">Get Started</Button>
+              <Button size="lg" onClick={() => navigate("/signin")}>
+                Get Started
+              </Button>
             </div>
           </div>
           <div className="flex gap-4 font-medium h-[170px]">
@@ -43,7 +46,6 @@ export default function Landing() {
                   Deploy Mindseek for an accurate and easy diagnosis tool.{" "}
                 </p>
               </div>
-
               <Button size="lg" className="self-end">
                 Contact Us
               </Button>
