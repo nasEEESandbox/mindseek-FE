@@ -38,47 +38,53 @@ export default function Signin() {
   }
   return (
     <>
-      <div className="bg-zinc-50 p-6 rounded-xl w-sm text-left">
-        <h1 className="text-3xl font-bold mb-8">Welcome Back</h1>
-        <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
-            <FormField
-              control={form.control}
-              name="nip"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>NIP</FormLabel>
-                  <FormControl>
-                    <Input {...field} />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="password"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Password</FormLabel>
-                  <FormControl>
-                    <Input type="password" {...field} />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <div className="text-center w-full mb-12">
-              <p>or</p>
-              <Button size="long" variant="secondary" onClick={()=>navigate('/home')}>
-                Sign in with SSO
+      <div className="w-full h-[100vh] flex justify-center items-center">
+        <div className="bg-zinc-50 p-6 rounded-xl w-sm text-left">
+          <h1 className="text-3xl font-bold mb-8">Welcome Back</h1>
+          <Form {...form}>
+            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+              <FormField
+                control={form.control}
+                name="nip"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>NIP</FormLabel>
+                    <FormControl>
+                      <Input {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="password"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Password</FormLabel>
+                    <FormControl>
+                      <Input type="password" {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <div className="text-center w-full mb-12">
+                <p>or</p>
+                <Button
+                  size="long"
+                  variant="secondary"
+                  onClick={() => navigate("/home")}
+                >
+                  Sign in with SSO
+                </Button>
+              </div>
+              <Button type="submit" size="long">
+                Sign in
               </Button>
-            </div>
-            <Button type="submit" size="long">
-              Sign in
-            </Button>
-          </form>
-        </Form>
+            </form>
+          </Form>
+        </div>
       </div>
     </>
   );
