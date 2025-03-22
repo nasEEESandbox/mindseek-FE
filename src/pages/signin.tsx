@@ -40,7 +40,7 @@ export default function Signin() {
   return (
     <>
       <div
-        className="w-full h-[100vh] flex justify-center items-center"
+        className="w-[100vw] h-[100vh] flex justify-center items-center"
         style={{
           backgroundImage: `url(${BG2})`,
           backgroundSize: "cover",

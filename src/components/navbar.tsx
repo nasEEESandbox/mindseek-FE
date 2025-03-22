@@ -8,7 +8,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 export default function Navbar() {
   return (
     <>
-      <div className="p-6 flex justify-between">
+      <div className="px-8 py-6 flex justify-between">
         <div className="flex items-center gap-8">
           <img src={ColoredLogo} alt="Colored Logo" className="w-40" />
           <Link to="/home">Home</Link>
@@ -16,10 +16,10 @@ export default function Navbar() {
           <Link to="/patientData">Patient Data</Link>
         </div>
         <div className="flex gap-4">
-          <Button size="icon">
+          <Button size="icon" variant="outline">
             <Bell />
           </Button>
-          <Button size="icon">
+          <Button size="icon" variant="outline">
             <LogOut />
           </Button>
           <div className="flex items-center gap-2">

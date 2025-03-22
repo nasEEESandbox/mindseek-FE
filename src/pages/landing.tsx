@@ -16,7 +16,7 @@ export default function Landing() {
           backgroundRepeat: "no-repeat",
         }}
       >
-        <div className="py-8 flex flex-col justify-center text-left gap-5">
+        <div className="pb-8 flex flex-col justify-center text-left gap-5">
           <img src={ColoredLogo} alt="Colored Logo" className="w-40" />
           <div className="text-6xl font-bold mt-8">
             <p>YOUR VERY OWN </p>
