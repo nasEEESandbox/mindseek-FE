@@ -13,6 +13,7 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { useNavigate } from "react-router-dom";
+import BG2 from "../assets/BG2.png";
 
 const formSchema = z.object({
   nip: z.string().length(18, { message: "NIP must have 18 characters" }),
@@ -38,8 +39,16 @@ export default function Signin() {
   }
   return (
     <>
-      <div className="w-full h-[100vh] flex justify-center items-center">
-        <div className="bg-zinc-50 p-6 rounded-xl w-sm text-left">
+      <div
+        className="w-full h-[100vh] flex justify-center items-center"
+        style={{
+          backgroundImage: `url(${BG2})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+        }}
+      >
+        <div className="bg-zinc-50 p-6 rounded-xl w-sm text-left drop-shadow-lg">
           <h1 className="text-3xl font-bold mb-8">Welcome Back</h1>
           <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
@@ -69,8 +78,12 @@ export default function Signin() {
                   </FormItem>
                 )}
               />
-              <div className="text-center w-full mb-12">
-                <p>or</p>
+              <div className="flex items-center gap-4">
+                <hr className="flex-1 border-t border-gray-300" />
+                <p className="text-center text-gray-600">or</p>
+                <hr className="flex-1 border-t border-gray-300" />
+              </div>
+              <div className="w-full mb-12">
                 <Button
                   size="long"
                   variant="secondary"

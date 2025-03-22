@@ -36,17 +36,17 @@ export default function Landing() {
           </div>
         </div>
         <div className="flex gap-4 font-medium h-[170px]">
-          <div className="rounded-lg bg-zinc-50 w-[180px] h-full p-3 text-right">
+          <div className="rounded-lg bg-zinc-50 w-[180px] h-full p-3 text-right drop-shadow-md">
             <p className="text-left text-xl">Deployed in</p>
             <p className="text-7xl font-bold text-purple-950 mt-4">50+</p>
             <span className="text-xl">Hospitals</span>
           </div>
-          <div className="rounded-lg bg-zinc-50 w-[220px] h-full p-3 text-right">
+          <div className="rounded-lg bg-zinc-50 w-[220px] h-full p-3 text-right drop-shadow-md">
             <p className="text-left text-xl">Trusted by</p>
             <p className="text-7xl font-bold text-emerald-900 mt-4">200+</p>
             <span className="text-xl">Psychiatrist</span>
           </div>
-          <div className="rounded-lg bg-zinc-50 w-[320px] h-full p-3 text-right flex flex-col justify-between">
+          <div className="rounded-lg bg-zinc-50 w-[320px] h-full p-3 text-right flex flex-col justify-between drop-shadow-md">
             <div>
               <p className="text-left text-2xl font-bold">
                 Want to work with us?
