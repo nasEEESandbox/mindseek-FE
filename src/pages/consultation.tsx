@@ -11,6 +11,7 @@ import Response from "@/components/response";
 export default function Consultation() {
   const [inputMessage, setInputMessage] = useState("");
   const [conversation, setConversation] = useState([]);
+  const [diagnosisData, setDiagnosisData] = useState(null);
   const [loading, setLoading] = useState(false);
   const [currentTime, setCurrentTime] = useState(new Date());
   const [showSidebar, setShowSidebar] = useState(false);
@@ -22,6 +23,17 @@ export default function Consultation() {
     }, 1000);
     return () => clearInterval(timer);
   }, []);
+
+  // Fetch diagnosis summary for patient_id = 1
+  const fetchDiagnosisData = async () => {
+    try {
+      const response = await fetch("http://localhost:8000/diagnosis_summary?patient_id=1");
+      const data = await response.json();
+      setDiagnosisData(data);
+    } catch (error) {
+      console.error("Error fetching diagnosis summary:", error);
+    }
+  };
 
   const sendMessage = async () => {
     if (!inputMessage || loading) return;
@@ -63,11 +75,10 @@ export default function Consultation() {
     } finally {
       setInputMessage("");
       setLoading(false);
+      // After handling a message, refresh the diagnosis data.
+      fetchDiagnosisData();
     }
   };
-
-  // Check if the psychiatrist has sent any data
-  const hasData = conversation.filter((item) => item.sender === "You").length > 0;
 
   return (
     <div className="w-[100vw] h-[100vh] p-6 space-y-4">
@@ -178,59 +189,32 @@ export default function Consultation() {
             <p>Diagnostic Wizard</p>
           </div>
           <div className="p-4 border rounded-b-lg border-zinc-300 text-sm text-left h-full overflow-y-auto">
-            {hasData ? (
-              <>
-                <div className="pb-4 border-b-2 border-zinc-300">
+            {diagnosisData && diagnosisData.hasData ? (
+              diagnosisData.diagnosis_summary.map((diagnosis, idx) => (
+                <div key={idx} className="pb-4 border-b-2 border-zinc-300 mb-4">
                   <div className="flex items-center justify-between mb-4">
                     <div>
-                      <p className="font-bold">
-                        Borderline Personality Disorder (BPD)
-                      </p>
-                      <p>Personality Disorder (Cluster B)</p>
+                      <p className="font-bold">{diagnosis.name}</p>
+                      <p>{diagnosis.cluster}</p>
                     </div>
                     <div className="bg-primary p-2 rounded-lg w-fit h-fit text-zinc-50 font-bold">
-                      F60.3
+                      {diagnosis.code}
                     </div>
                   </div>
-                  <p>
-                    Marked by emotional dysregulation, impulsivity, and unstable interpersonal relationships.
-                    It involves identity disturbance, fear of abandonment, and recurrent self-harm or suicidality.
-                    Treatment focuses on DBT and mood stabilization.
-                  </p>
-                </div>
-                <ScrollArea className="text-zinc-50 pt-2 h-[54vh]">
+                  <p>{diagnosis.description}</p>
+                  <ScrollArea className="text-zinc-50 pt-2 flex-1 overflow-y-auto">
                   <div className="space-y-2">
-                    <Symptoms
-                      message="Frantic efforts to avoid real or imagined abandonment."
-                      isGood={true}
-                    />
-                    <Symptoms
-                      message="A pattern of unstable and intense interpersonal relationships characterized by alternating between extremes of idealization and devaluation."
-                      isGood={false}
-                    />
-                    <Symptoms
-                      message="A pattern of unstable and intense interpersonal relationships characterized by alternating between extremes of idealization and devaluation."
-                      isGood={false}
-                    />
-                    <Symptoms
-                      message="Frantic efforts to avoid real or imagined abandonment."
-                      isGood={true}
-                    />
-                    <Symptoms
-                      message="Frantic efforts to avoid real or imagined abandonment."
-                      isGood={true}
-                    />
-                    <Symptoms
-                      message="Frantic efforts to avoid real or imagined abandonment."
-                      isGood={true}
-                    />
-                    <Symptoms
-                      message="Frantic efforts to avoid real or imagined abandonment."
-                      isGood={true}
-                    />
-                  </div>
-                </ScrollArea>
-              </>
+                      {diagnosis.symptoms.map((symptom, i) => (
+                        <Symptoms
+                          key={i}
+                          message={symptom.message}
+                          isGood={symptom.isGood}
+                        />
+                      ))}
+                    </div>
+                  </ScrollArea>
+                </div>
+              ))
             ) : (
               <div className="flex items-center justify-center h-full text-zinc-500">
                 No data available
