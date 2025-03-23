@@ -12,7 +12,9 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { MoreHorizontal } from "lucide-react";
 
-export const columns: ColumnDef<Patient>[] = [
+export const columns = (
+  navigate: (path: string) => void
+): ColumnDef<Patient>[] => [
   {
     accessorKey: "name",
     header: ({ column }) => {
@@ -58,7 +60,13 @@ export const columns: ColumnDef<Patient>[] = [
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">
             <DropdownMenuLabel>Actions</DropdownMenuLabel>
-            <DropdownMenuSeparator />
+            <DropdownMenuItem
+              onClick={() => {
+                navigate(`/patient`);
+              }}
+            >
+              See details
+            </DropdownMenuItem>
             <DropdownMenuItem>Edit data</DropdownMenuItem>
             <DropdownMenuItem>Delete data</DropdownMenuItem>
           </DropdownMenuContent>

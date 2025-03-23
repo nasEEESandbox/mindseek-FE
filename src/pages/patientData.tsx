@@ -4,6 +4,7 @@ import { User } from "lucide-react";
 import { DataTable } from "@/components/patientData/data-table";
 import { columns } from "@/components/patientData/columns";
 import { dataPasien } from "../components/dummy";
+import { useNavigate } from "react-router-dom";
 
 export default function Consultation() {
   const data = [
@@ -15,10 +16,13 @@ export default function Consultation() {
       currentDiagnosis: "Major Depressive Disorder",
       riskLevel: "Moderate Risk",
       phone: "+62 81272617398",
-      lastVisit : "23/03/2025",
-      nextVisit : "24/03/2025"
+      lastVisit: "23/03/2025",
+      nextVisit: "24/03/2025",
     },
   ];
+  const navigate = useNavigate();
+
+  const fetchedColumns = columns(navigate);
 
   return (
     <>
@@ -39,7 +43,7 @@ export default function Consultation() {
               <span className="font-bold text-xl">72</span>
               <span>total patients</span>
             </div>
-            <DataTable columns={columns} data={dataPasien} />
+            <DataTable columns={fetchedColumns} data={dataPasien} />
           </div>
         </div>
       </div>
