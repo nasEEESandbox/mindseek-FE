@@ -1,38 +1,25 @@
-export default function Response() {
+import React from "react";
+import ReactMarkdown from "react-markdown";
+
+export default function Response({ message, retrieval_info }) {
+  // Determine if the source button should be shown.
+  const showSource = retrieval_info && retrieval_info !== "None";
+
   return (
-    <>
-      <div className="py-4 border-y-1 border-zinc-300">
-        <p className="text-left">
-          Based on your description, mood instability, impulsivity, and fear of
-          abandonment are key features of Borderline Personality Disorder (BPD).
-          To confirm, let’s cross-check with DSM-5 criteria.
-          <br />
-          <br />
-          According to DSM-5, BPD requires at least five of the following:
-        </p>
-        <ol className="list-decimal pl-6 text-left">
-          <li>Frantic efforts to avoid real or imagined abandonment.</li>
-          <li>Unstable and intense interpersonal relationships.</li>
-          <li>Identity disturbance (unstable self-image or sense of self).</li>
-          <li>
-            Impulsivity in at least two potentially self-damaging areas (e.g.,
-            spending, substance use, reckless driving, binge eating).
-          </li>
-          <li>
-            Recurrent suicidal behavior, gestures, or threats, or
-            self-mutilating behavior.
-          </li>
-          <li>
-            Affective instability due to marked reactivity of mood. Chronic
-            feelings of emptiness.
-          </li>
-          <li>Inappropriate, intense anger or difficulty controlling anger.</li>
-          <li>
-            Transient, stress-related paranoid ideation or severe dissociative
-            symptoms.
-          </li>
-        </ol>
+    <div className="flex justify-start w-full">
+      <div className="inline-block bg-gray-200 px-3 py-2 rounded-md text-left max-w-[60%] relative">
+        <ReactMarkdown>{message}</ReactMarkdown>
+        {showSource && (
+          <div className="mt-5">
+            <button className="text-xs bg-gray-200 text-gray-800 px-3 py-2 outline-gray-400 outline-1 rounded relative group">
+              Source
+              <div className="absolute left-0 bottom-full mb-1 w-max px-2 py-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-fuchsia-200/90 text-black text-xs p-1 rounded">
+                {retrieval_info}
+              </div>
+            </button>
+          </div>
+        )}
       </div>
-    </>
+    </div>
   );
 }
