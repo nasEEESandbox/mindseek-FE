@@ -25,7 +25,7 @@ interface DataTableProps<TData, TValue> {
   data: TData[];
 }
 
-export function DataTablePast<TData, TValue>({
+export function DataTableDiagnosis<TData, TValue>({
   columns,
   data,
 }: DataTableProps<TData, TValue>) {

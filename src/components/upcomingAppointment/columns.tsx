@@ -1,7 +1,7 @@
 import { ColumnDef } from "@tanstack/react-table";
 import { Patient } from "../types.js";
 
-export const columns: ColumnDef<Patient>[] = [
+export const columnsUpcoming: ColumnDef<Patient>[] = [
   {
     accessorKey: "appointmentTime",
     header: "Date & Time",

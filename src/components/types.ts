@@ -16,4 +16,11 @@ export type Patient = {
     assessment : string;
     status : "Confirmed" | "Uncomfirmed";
     sessionSummary : string;
+    severity : "Severe" | "Mild";
+    firstDiagnosed : Date;
+    currentStatus : string;
+    dosage : string;
+    startMedicine : Date;
+    endMedicine : Date; 
+    notesMedicine : string;
   };
