@@ -20,14 +20,12 @@ import {
   getPaginationRowModel,
 } from "@tanstack/react-table";
 
-import { ListFilter } from "lucide-react";
-
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
   data: TData[];
 }
 
-export function DataTable<TData, TValue>({
+export function DataTableUpcoming<TData, TValue>({
   columns,
   data,
 }: DataTableProps<TData, TValue>) {
@@ -35,10 +33,6 @@ export function DataTable<TData, TValue>({
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
     []
   );
-  const [pagination, setPagination] = React.useState({
-    pageIndex: 0,
-    pageSize: 5,
-  });
 
   const table = useReactTable({
     data,

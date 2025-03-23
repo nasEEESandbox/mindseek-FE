@@ -3,8 +3,9 @@ import Navbar from "@/components/navbar";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import PersonalInfo from "@/components/personalInfo";
+import PersonalInfo from "@/components/personalInfo.tsx";
 import AppointmentHistory from "@/components/appointmentHistory.jsx";
+import MedicalHistory from "@/components/medicalHistory.jsx";
 
 export default function Patient() {
   return (
@@ -61,9 +62,11 @@ export default function Patient() {
                   <PersonalInfo />
                 </TabsContent>
                 <TabsContent value="appointment">
-                    <AppointmentHistory />
+                  <AppointmentHistory />
                 </TabsContent>
-                <TabsContent value="medical">MEDICAL</TabsContent>
+                <TabsContent value="medical">
+                  <MedicalHistory />
+                </TabsContent>
               </Tabs>
             </div>
           </div>

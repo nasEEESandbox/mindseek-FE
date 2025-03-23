@@ -1,4 +1,4 @@
-import Navbar from "@/components/navbar";
+import Navbar from "@/components/navbar.jsx";
 import BG3 from "../assets/BG3.png";
 import { User } from "lucide-react";
 import { DataTable } from "@/components/patientData/data-table";

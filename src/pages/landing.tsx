@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import ColoredLogo from "../assets/ColoredLogo.png";
 import BG1 from "../assets/BG1.png";
 export default function Landing() {
-  const navigate = useNavigate(); 
+  const navigate = useNavigate();
   return (
     <>
       <div
