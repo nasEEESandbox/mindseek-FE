@@ -1,14 +1,7 @@
 import { ColumnDef } from "@tanstack/react-table";
 import { ArrowUpDown } from "lucide-react";
 import { Button } from "../ui/button.jsx";
-export type patient = {
-  PID: String;
-  name: String;
-  appointmentTime: Date;
-  currentMedication: String;
-  currentDiagnosis: String;
-  riskLevel: "High Risk" | "Moderate Risk" | "Low Risk";
-};
+import { Patient } from "../types.js";
 
 export const columns: ColumnDef<Patient>[] = [
   {

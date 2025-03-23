@@ -6,14 +6,16 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import Symptoms from "@/components/symptoms";
 import Chat from "@/components/chat";
 import Response from "@/components/response";
+import { useNavigate } from "react-router-dom";
 
 export default function Consultation() {
+  const navigate = useNavigate();
   return (
     <>
       <div className="w-[100vw] h-[100vh] p-6 space-y-4">
         <div className="flex justify-between border-b border-zinc-300 pb-3">
           <div className="flex gap-3">
-            <Button size="icon">
+            <Button size="icon" onClick={() => navigate("/home")}>
               <ArrowLeft />
             </Button>
             <Avatar>
@@ -24,7 +26,7 @@ export default function Consultation() {
               <p className="font-bold">Budi Santoso</p>
               <p>Patient ID : 123194-7523</p>
             </div>
-            <Button variant="outline">View Patient Data</Button>
+            <Button variant="outline" onClick={()=>navigate("/patient")}>View Patient Data</Button>
           </div>
           <div className="flex text-sm gap-3 items-center">
             <div className="text-right">
