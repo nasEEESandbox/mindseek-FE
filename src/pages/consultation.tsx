@@ -27,7 +27,7 @@ export default function Consultation() {
   // Fetch diagnosis summary for patient_id = 1
   const fetchDiagnosisData = async () => {
     try {
-      const response = await fetch("http://localhost:8000/diagnosis_summary?patient_id=1");
+      const response = await fetch("http://157.230.243.27:8080//diagnosis_summary?patient_id=1");
       const data = await response.json();
       setDiagnosisData(data);
     } catch (error) {
@@ -40,18 +40,19 @@ export default function Consultation() {
     // Append the user's message.
     setConversation((prev) => [
       ...prev,
-      { sender: "You", message: inputMessage },
+      { sender: "You", message: inputMessage},
     ]);
     setLoading(true);
 
     const payload = {
       message: inputMessage,
       patient_id: 1,
+      patient_name: "John Doe",
       psychiatrist_name: "dr. Al-Farabi",
     };
 
     try {
-      const response = await fetch("http://localhost:8000/api/message", {
+      const response = await fetch("http://157.230.243.27:8080/api/message", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
@@ -75,7 +76,6 @@ export default function Consultation() {
     } finally {
       setInputMessage("");
       setLoading(false);
-      // After handling a message, refresh the diagnosis data.
       fetchDiagnosisData();
     }
   };
