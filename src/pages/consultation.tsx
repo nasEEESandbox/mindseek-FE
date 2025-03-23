@@ -27,7 +27,7 @@ export default function Consultation() {
   // Fetch diagnosis summary for patient_id = 1
   const fetchDiagnosisData = async () => {
     try {
-      const response = await fetch("http://157.230.243.27:8080//diagnosis_summary?patient_id=1");
+      const response = await fetch("http://157.230.243.27:8080/diagnosis_summary?patient_id=1");
       const data = await response.json();
       setDiagnosisData(data);
     } catch (error) {
