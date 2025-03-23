@@ -1,5 +1,6 @@
 // ini cuma placeholder, nanti sesuaikan sama yang sebenarnya.
 // ini dibuat semudah mungkin agar bisa mengikuti figma
+// ini amalgamation semua data, jangan dipake di actual thing
 export type Patient = {
     PID: string;
     name: string;
@@ -10,4 +11,9 @@ export type Patient = {
     phone: string;
     lastVisit : Date;
     NextVisit : Date; 
+    doctor : string;
+    purpose : string;
+    assessment : string;
+    status : "Confirmed" | "Uncomfirmed";
+    sessionSummary : string;
   };
